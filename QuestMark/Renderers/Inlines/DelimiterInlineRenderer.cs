@@ -1,5 +1,7 @@
 using Markdig.Renderers;
 using Markdig.Syntax.Inlines;
+using QuestMark.Extensions;
+using QuestPDF.Fluent;
 
 namespace QuestMark.Renderers.Inlines;
 
@@ -7,6 +9,7 @@ public class DelimiterInlineRenderer : MarkdownObjectRenderer<PdfRenderer, Delim
 {
     protected override void Write(PdfRenderer renderer, DelimiterInline delimiter)
     {
-        delimiter.ReplaceByLiteral();
+        TextDescriptor descriptor = renderer.CurrentText.ThrowIfNull();
+        descriptor.Span(delimiter.ToLiteral());
     }
 }
