@@ -1,0 +1,16 @@
+using Markdig.Renderers;
+using Markdig.Syntax;
+using QuestMark.Extensions;
+using QuestPDF.Fluent;
+
+namespace QuestMark.Renderers.Blocks;
+
+public class ThematicBreakRenderer : MarkdownObjectRenderer<PdfRenderer, ThematicBreakBlock>
+{
+    protected override void Write(PdfRenderer renderer, ThematicBreakBlock thematicBreak)
+    {
+        ColumnDescriptor column = renderer.CurrentColumn.ThrowIfNull();
+        column.Item().PaddingVertical(8).LineHorizontal(1);
+        column.Item().Text(text => text.EmptyLine());
+    }
+}
