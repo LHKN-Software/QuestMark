@@ -1,4 +1,3 @@
-using System.Reflection.Metadata.Ecma335;
 using Markdig.Renderers;
 using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
