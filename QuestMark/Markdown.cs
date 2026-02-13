@@ -18,13 +18,17 @@ public static class Markdown
         PdfStyleOptions styleOptions
     )
     {
-        foreach (IMarkdownExtension extension in pipeline.Extensions)
+        if (!Settings.DisableWarnings)
         {
-            if (!PdfRenderer.SupportedExtensions.Contains(extension.GetType()))
+            foreach (IMarkdownExtension extension in pipeline.Extensions)
             {
-                throw new InvalidOperationException(
-                    $"Extension '{extension.GetType()}' is not supported by this library"
-                );
+                if (!PdfRenderer.SupportedExtensions.Contains(extension.GetType()))
+                {
+                    Console.WriteLine(
+                        $"[QuestMark~Warning]: Extension '{extension.GetType()}' is not supported "
+                            + "by this library, you may experience unpredictable results"
+                    );
+                }
             }
         }
 
