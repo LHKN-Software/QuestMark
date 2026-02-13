@@ -1,6 +1,8 @@
 # QuestMark
 
-This library acts as a bridge to render markdown as a [QuestPDF component](https://www.questpdf.com) by using [Markdig](https://github.com/xoofx/markdig) as the parser.
+This library allows you to render markdown to PDF. It uses the [Markdig](https://github.com/xoofx/markdig) library to parse the markdown and the [QuestPDF](https://www.questpdf.com) library to render the PDF component, hence the name.
+
+The code in this library is heavily inspired by the HTML renderer found in the Markdig source code.
 
 **Note: This is extremely experimental!**
 
@@ -32,7 +34,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 
-// Select the approprate QuestPDF license:
+// Select the approprate QuestPDF license for your usage:
 QuestPDF.Settings.License = LicenseType.Community;
 
 // Build the Markdig pipeline:
