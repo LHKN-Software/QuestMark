@@ -5,7 +5,7 @@ using QuestPDF.Fluent;
 
 namespace QuestMark.Renderers.Inlines;
 
-public class CodeInlineRenderer : MarkdownObjectRenderer<PdfRenderer, CodeInline>
+internal class CodeInlineRenderer : MarkdownObjectRenderer<PdfRenderer, CodeInline>
 {
     protected override void Write(PdfRenderer renderer, CodeInline code)
     {

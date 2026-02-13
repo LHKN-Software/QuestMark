@@ -6,7 +6,7 @@ using QuestPDF.Infrastructure;
 
 namespace QuestMark.Renderers.Blocks;
 
-public class ListRenderer : MarkdownObjectRenderer<PdfRenderer, ListBlock>
+internal class ListRenderer : MarkdownObjectRenderer<PdfRenderer, ListBlock>
 {
     protected override void Write(PdfRenderer renderer, ListBlock list)
     {

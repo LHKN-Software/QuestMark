@@ -6,7 +6,7 @@ using QuestPDF.Fluent;
 
 namespace QuestMark.Renderers.Blocks;
 
-public class ParagraphRenderer : MarkdownObjectRenderer<PdfRenderer, ParagraphBlock>
+internal class ParagraphRenderer : MarkdownObjectRenderer<PdfRenderer, ParagraphBlock>
 {
     protected override void Write(PdfRenderer renderer, ParagraphBlock paragraph)
     {

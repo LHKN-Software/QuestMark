@@ -6,7 +6,7 @@ using QuestPDF.Infrastructure;
 
 namespace QuestMark.Renderers.Blocks;
 
-public class BlockQuoteRenderer : MarkdownObjectRenderer<PdfRenderer, QuoteBlock>
+internal class BlockQuoteRenderer : MarkdownObjectRenderer<PdfRenderer, QuoteBlock>
 {
     protected override void Write(PdfRenderer renderer, QuoteBlock quoteBlock)
     {

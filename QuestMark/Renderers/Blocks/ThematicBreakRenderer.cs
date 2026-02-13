@@ -5,7 +5,7 @@ using QuestPDF.Fluent;
 
 namespace QuestMark.Renderers.Blocks;
 
-public class ThematicBreakRenderer : MarkdownObjectRenderer<PdfRenderer, ThematicBreakBlock>
+internal class ThematicBreakRenderer : MarkdownObjectRenderer<PdfRenderer, ThematicBreakBlock>
 {
     protected override void Write(PdfRenderer renderer, ThematicBreakBlock thematicBreak)
     {

@@ -5,7 +5,7 @@ using QuestPDF.Fluent;
 
 namespace QuestMark.Renderers.Inlines;
 
-public class DelimiterInlineRenderer : MarkdownObjectRenderer<PdfRenderer, DelimiterInline>
+internal class DelimiterInlineRenderer : MarkdownObjectRenderer<PdfRenderer, DelimiterInline>
 {
     protected override void Write(PdfRenderer renderer, DelimiterInline delimiter)
     {

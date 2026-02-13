@@ -5,7 +5,7 @@ using QuestPDF.Fluent;
 
 namespace QuestMark.Renderers.Inlines;
 
-public class AutolinkInlineRenderer : MarkdownObjectRenderer<PdfRenderer, AutolinkInline>
+internal class AutolinkInlineRenderer : MarkdownObjectRenderer<PdfRenderer, AutolinkInline>
 {
     protected override void Write(PdfRenderer renderer, AutolinkInline autolink)
     {

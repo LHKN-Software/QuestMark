@@ -14,7 +14,7 @@ using QuestPDF.Infrastructure;
 
 namespace QuestMark.Renderers;
 
-public class PdfRenderer : RendererBase
+internal class PdfRenderer : RendererBase
 {
     internal static readonly HashSet<Type> SupportedExtensions = new([
         typeof(AbbreviationExtension),

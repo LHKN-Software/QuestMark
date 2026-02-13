@@ -13,7 +13,7 @@ namespace QuestMark.Renderers.Blocks;
 ///
 /// After writing children, the current text descriptor is reset to null.
 /// </summary>
-public class HeadingRenderer : MarkdownObjectRenderer<PdfRenderer, HeadingBlock>
+internal class HeadingRenderer : MarkdownObjectRenderer<PdfRenderer, HeadingBlock>
 {
     protected override void Write(PdfRenderer renderer, HeadingBlock heading)
     {

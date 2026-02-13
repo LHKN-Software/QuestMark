@@ -9,7 +9,7 @@ namespace QuestMark.Renderers.Inlines;
 ///
 /// For example see <see cref="LiteralInlineRenderer" />
 /// </summary>
-public class LinkInlineRenderer : MarkdownObjectRenderer<PdfRenderer, LinkInline>
+internal class LinkInlineRenderer : MarkdownObjectRenderer<PdfRenderer, LinkInline>
 {
     protected override void Write(PdfRenderer renderer, LinkInline link)
     {

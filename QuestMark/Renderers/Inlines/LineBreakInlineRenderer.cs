@@ -4,7 +4,7 @@ using QuestMark.Extensions;
 
 namespace QuestMark.Renderers.Inlines;
 
-public class LineBreakInlineRenderer : MarkdownObjectRenderer<PdfRenderer, LineBreakInline>
+internal class LineBreakInlineRenderer : MarkdownObjectRenderer<PdfRenderer, LineBreakInline>
 {
     protected override void Write(PdfRenderer renderer, LineBreakInline lineBreak)
     {
