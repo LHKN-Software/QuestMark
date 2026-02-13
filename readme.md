@@ -54,15 +54,16 @@ string markdown = File.ReadAllText("./your-file.md");
 MarkdownComponent component = QuestMark.Markdown.ToMarkdownComponent(pipeline, markdown);
 
 // Create QuestPDF document:
-Document document = Document.Create(document => {
-    document.Page(page => {
+Document document = Document.Create(document =>
+{
+    document.Page(page =>
+    {
         page.Size(PageSizes.A4);
         page.PageColor(Colors.White);
         page.Margin(10);
 
-        IContainer container = page.Content();
-
         // Add component to page:
+        IContainer content = page.Content();
         content.Component(component);
     });
 });
@@ -77,6 +78,43 @@ else
 {
     document.GeneratePdfAndShow();
 }
+```
+
+## Customizing Renderer
+
+There is basic support for customizing each renderer. You will need to create a `PdfStyleOptions` object and set any of the delegate functions found there with your own.
+
+For example:
+
+```csharp
+// Override default styling options for headings and lists:
+PdfStyleOptions styleOptions = new()
+{
+    HeadingTextStyler = (level) =>
+    {
+        Int32 size = 40 - level * 4;
+        TextStyle style = TextStyle.Default.FontSize(size).FontColor(Colors.Grey.Lighten1);
+
+        if (level < 2 && level >= 4)
+        {
+            style.SemiBold();
+        }
+        else if (level < 4)
+        {
+            style.Bold();
+        }
+
+        return style;
+    },
+    ListStyler = (container, depth) => container.PaddingLeft(depth * 4),
+};
+
+// Construct the MarkdownComponent (similar API to Markdig):
+MarkdownComponent component = QuestMark.Markdown.ToMarkdownComponent(
+    pipeline,
+    markdown,
+    styleOptions // pass it in here
+);
 ```
 
 ## To Do
