@@ -29,14 +29,18 @@ internal class PdfRenderer : RendererBase
 
     internal TextDescriptor? CurrentText { get; set; }
 
-    internal PdfStyleOptions StyleOptions { get; set; }
+    internal PdfStyleOptions StyleOptions { get; set; } = PdfStyleOptions.Default;
 
     private readonly IContainer _container;
 
-    public PdfRenderer(IContainer container)
+    public PdfRenderer(IContainer container, PdfStyleOptions? styleOptions = default)
     {
         _container = container;
-        StyleOptions = PdfStyleOptions.Default;
+
+        if (styleOptions is not null)
+        {
+            StyleOptions = styleOptions;
+        }
 
         _container.Column(column =>
         {

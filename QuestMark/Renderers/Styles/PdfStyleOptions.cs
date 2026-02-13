@@ -4,6 +4,9 @@ using QuestPDF.Infrastructure;
 
 namespace QuestMark.Renderers.Styles;
 
+/// <summary>
+/// Holds delegates and text styles for various markdown elements
+/// </summary>
 public record PdfStyleOptions
 {
     public static readonly PdfStyleOptions Default = new();
