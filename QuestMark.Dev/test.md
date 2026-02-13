@@ -65,7 +65,15 @@ Lists can either be ordered or unordered. They can also be nested, where each ch
 
 ### Autolinks
 
-This repository URL https://github.com/LHKN-Software/QuestMark will automatically become a link.
+This repository URL https://github.com/LHKN-Software/QuestMark will automatically become a link without using the markdown link syntax.
+
+### Inline Links
+
+Inline links are denoted by the syntax \[link text here\]\(url here\). For example: [This is the link text](https://test.com).
+
+### Images
+
+At the moment images will just be rendered as links. For example: ![Alt text](https://placehold.co/600x400)
 
 ## Code
 
