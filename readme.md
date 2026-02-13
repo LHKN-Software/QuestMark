@@ -78,3 +78,12 @@ else
     document.GeneratePdfAndShow();
 }
 ```
+
+## To Do
+
+- [ ] render images instead of rendering a link to the image
+- [ ] support as many Markdig extensions as possible
+  - [ ] tables
+  - [ ] alerts
+  - [ ] footnotes
+  - [ ] JIRA links
