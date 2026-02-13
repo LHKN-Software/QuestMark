@@ -10,7 +10,7 @@ public class ThematicBreakRenderer : MarkdownObjectRenderer<PdfRenderer, Themati
     protected override void Write(PdfRenderer renderer, ThematicBreakBlock thematicBreak)
     {
         ColumnDescriptor column = renderer.CurrentColumn.ThrowIfNull();
-        column.Item().PaddingVertical(8).LineHorizontal(1);
+        renderer.StyleOptions.ThematicBreakStyler(column.Item());
         column.Item().Text(text => text.EmptyLine());
     }
 }

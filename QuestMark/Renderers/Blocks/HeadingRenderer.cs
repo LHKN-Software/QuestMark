@@ -21,7 +21,7 @@ public class HeadingRenderer : MarkdownObjectRenderer<PdfRenderer, HeadingBlock>
         ContainerInline? items = heading.Inline.ThrowIfNull();
 
         Int32 level = heading.Level;
-        TextStyle style = GetTextStyle(level);
+        TextStyle style = renderer.StyleOptions.HeadingStyler(level);
 
         previousColumn
             .Item()
@@ -35,28 +35,15 @@ public class HeadingRenderer : MarkdownObjectRenderer<PdfRenderer, HeadingBlock>
                         renderer.CurrentText = text;
                         text.DefaultTextStyle(style);
                         renderer.Write(items);
-                        column.Item().Text(text => text.EmptyLine());
+
+                        if (!heading.IsLastChild())
+                        {
+                            column.Item().Text(text => text.EmptyLine());
+                        }
+
                         renderer.CurrentText = null;
                         renderer.CurrentColumn = previousColumn;
                     });
             });
     }
-
-    private static TextStyle GetTextStyle(Int32 level)
-    {
-        Int32 size = GetFontSize(level);
-        bool isBold = IsBold(level);
-        TextStyle style = new TextStyle().FontSize(size);
-
-        if (isBold)
-        {
-            style = style.Bold();
-        }
-
-        return style;
-    }
-
-    private static Int32 GetFontSize(Int32 level) => 40 - level * 6;
-
-    private static bool IsBold(Int32 level) => level > 3;
 }

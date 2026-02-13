@@ -1,7 +1,14 @@
+using Markdig.Extensions.Abbreviations;
+using Markdig.Extensions.AutoLinks;
+using Markdig.Extensions.EmphasisExtras;
+using Markdig.Extensions.Hardlines;
+using Markdig.Extensions.ListExtras;
+using Markdig.Extensions.NonAsciiNoEscape;
 using Markdig.Renderers;
 using Markdig.Syntax;
 using QuestMark.Renderers.Blocks;
 using QuestMark.Renderers.Inlines;
+using QuestMark.Renderers.Styles;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
@@ -9,15 +16,27 @@ namespace QuestMark.Renderers;
 
 public class PdfRenderer : RendererBase
 {
-    public ColumnDescriptor? CurrentColumn { get; set; }
+    internal static readonly HashSet<Type> SupportedExtensions = new([
+        typeof(AbbreviationExtension),
+        typeof(AutoLinkExtension),
+        typeof(EmphasisExtraExtension),
+        typeof(ListExtraExtension),
+        typeof(NonAsciiNoEscapeExtension),
+        typeof(SoftlineBreakAsHardlineExtension),
+    ]);
 
-    public TextDescriptor? CurrentText { get; set; }
+    internal ColumnDescriptor? CurrentColumn { get; set; }
+
+    internal TextDescriptor? CurrentText { get; set; }
+
+    internal PdfStyleOptions StyleOptions { get; set; }
 
     private readonly IContainer _container;
 
     public PdfRenderer(IContainer container)
     {
         _container = container;
+        StyleOptions = PdfStyleOptions.Default;
 
         _container.Column(column =>
         {

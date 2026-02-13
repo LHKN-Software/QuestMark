@@ -31,10 +31,7 @@ public class CodeBlockRenderer : MarkdownObjectRenderer<PdfRenderer, CodeBlock>
 
                 foreach (StringLine line in codeBlock.Lines)
                 {
-                    text.Span(line.ToString()[indent..])
-                        .FontColor(Colors.Red.Darken1)
-                        .FontFamily("Andale Mono")
-                        .SemiBold();
+                    text.Span(line.ToString()[indent..]).Style(renderer.StyleOptions.CodeTextStyle);
 
                     if (i < codeBlock.Lines.Count - 1)
                     {
@@ -44,11 +41,7 @@ public class CodeBlockRenderer : MarkdownObjectRenderer<PdfRenderer, CodeBlock>
                     i++;
                 }
 
-                if (codeBlock.IsNested() && !codeBlock.IsLastChild())
-                {
-                    previousColumn.Item().Text(text => text.EmptyLine());
-                }
-                else
+                if (!codeBlock.IsLastChild())
                 {
                     previousColumn.Item().Text(text => text.EmptyLine());
                 }

@@ -1,5 +1,6 @@
 using Markdig;
 using QuestMark.Components;
+using QuestMark.Renderers;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -10,6 +11,16 @@ public static class Markdown
 {
     public static MarkdownComponent ToMarkdownComponent(MarkdownPipeline pipeline, string markdown)
     {
+        foreach (IMarkdownExtension extension in pipeline.Extensions)
+        {
+            if (!PdfRenderer.SupportedExtensions.Contains(extension.GetType()))
+            {
+                throw new InvalidOperationException(
+                    $"Extension '{extension.GetType()}' is not supported by this library"
+                );
+            }
+        }
+
         return new MarkdownComponent(pipeline, markdown);
     }
 
