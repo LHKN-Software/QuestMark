@@ -44,17 +44,29 @@ public class ParagraphRenderer : MarkdownObjectRenderer<PdfRenderer, ParagraphBl
 
     private static bool ShouldAddEmptyLine(ParagraphBlock paragraph)
     {
-        if (!paragraph.IsNested())
-        {
-            return true;
-        }
-
         if (!paragraph.IsLastChild())
         {
             return true;
         }
 
-        // Always add a new line when inside a list item
-        return paragraph.GetParentOfType<ListItemBlock>() != null;
+        // We should always add a new line after a list item, except if it's the last list item in
+        // the list AND it's nested inside a quote block. This is because the quote block will have
+        // a background colour and there will appear to be too much padding at the bottom.
+
+        ListItemBlock? parent = paragraph.GetParentOfType<ListItemBlock>();
+
+        if (parent is null)
+        {
+            return false;
+        }
+
+        bool isInsideQuote = parent.GetAncestorOfType<QuoteBlock>() is not null;
+
+        if (isInsideQuote && parent.IsLastChild())
+        {
+            return false;
+        }
+
+        return true;
     }
 }
