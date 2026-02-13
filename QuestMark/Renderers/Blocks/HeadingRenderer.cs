@@ -21,7 +21,7 @@ internal class HeadingRenderer : MarkdownObjectRenderer<PdfRenderer, HeadingBloc
         ContainerInline? items = heading.Inline.ThrowIfNull();
 
         Int32 level = heading.Level;
-        TextStyle style = renderer.StyleOptions.HeadingStyler(level);
+        TextStyle style = renderer.StyleOptions.HeadingTextStyler(level);
 
         previousColumn
             .Item()

@@ -40,7 +40,7 @@ public record PdfStyleOptions
     public ListBlockStyler ListStyler { get; set; } =
         (container, depth) => container.PaddingLeft(depth * 2);
 
-    public HeadingStyler HeadingStyler { get; set; } =
+    public HeadingStyler HeadingTextStyler { get; set; } =
         level =>
         {
             Int32 size = 40 - level * 6;
