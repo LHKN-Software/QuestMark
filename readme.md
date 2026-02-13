@@ -1,6 +1,6 @@
 # QuestMark
 
-This library allows you to render markdown to PDF. It uses the [Markdig](https://github.com/xoofx/markdig) library to parse the markdown and the [QuestPDF](https://www.questpdf.com) library to render the PDF component, hence the name.
+This library allows you to render markdown to PDF. It uses the [Markdig](https://github.com/xoofx/markdig) library to parse the markdown and the [QuestPDF](https://www.questpdf.com) library to render the PDF component, hence the name. If you use these libraries, QuestMark might be of use to you.
 
 The code in this library is heavily inspired by the HTML renderer found in the Markdig source code.
 
@@ -9,6 +9,8 @@ The code in this library is heavily inspired by the HTML renderer found in the M
 ## Getting Started
 
 This library uses the lovely Markdig and QuestPDF libraries to render simple markdown into a QuestPDF component. Most of the time you will be hand-crafting your PDFs using QuestPDF with fairly predictable and nearly static content, but sometimes you might have the need to render some arbitrary markdown into a component inside your document without it appearing ugly and unformatted. That's where QuestMark comes in.
+
+**Note: Only fairly basic markdown features are supported at the moment**
 
 ### Installation
 
