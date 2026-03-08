@@ -2,7 +2,7 @@ using Markdig.Syntax.Inlines;
 
 namespace QuestMark.Extensions;
 
-public static class InlineExtensions
+internal static class InlineExtensions
 {
     public static T? GetAncestorOfType<T>(this Inline inline)
         where T : Inline

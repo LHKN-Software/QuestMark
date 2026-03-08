@@ -1,9 +1,8 @@
-using System.Reflection.Metadata.Ecma335;
 using Markdig.Syntax;
 
 namespace QuestMark.Extensions;
 
-public static class BlockExtensions
+internal static class BlockExtensions
 {
     public static T? GetAncestorOfType<T>(this Block block)
         where T : Block

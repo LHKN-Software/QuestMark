@@ -1,10 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using QuestPDF.Fluent;
 
 namespace QuestMark.Extensions;
 
-public static class GuardExtensions
+internal static class GuardExtensions
 {
     [return: NotNull]
     public static T ThrowIfNull<T>(

@@ -16,7 +16,7 @@ namespace QuestMark.Renderers;
 
 internal class PdfRenderer : RendererBase
 {
-    internal static readonly HashSet<Type> SupportedExtensions = new([
+    public static readonly HashSet<Type> SupportedExtensions = new([
         typeof(AbbreviationExtension),
         typeof(AutoLinkExtension),
         typeof(EmphasisExtraExtension),
@@ -25,11 +25,11 @@ internal class PdfRenderer : RendererBase
         typeof(SoftlineBreakAsHardlineExtension),
     ]);
 
-    internal ColumnDescriptor? CurrentColumn { get; set; }
+    public ColumnDescriptor? CurrentColumn { get; set; }
 
-    internal TextDescriptor? CurrentText { get; set; }
+    public TextDescriptor? CurrentText { get; set; }
 
-    internal PdfStyleOptions StyleOptions { get; set; } = PdfStyleOptions.Default;
+    public PdfStyleOptions StyleOptions { get; set; } = PdfStyleOptions.Default;
 
     private readonly IContainer _container;
 
