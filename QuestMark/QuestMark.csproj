@@ -4,6 +4,16 @@
         <TargetFrameworks>net10.0;net9.0;net8.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageId>QuestMark</PackageId>
+        <PackageTags>QuestPDF;Markdig;Markdown to PDF renderer;PDF;Markdown</PackageTags>
+        <Authors>Andrew Lahikainen</Authors>
+        <Company>LHKN Software</Company>
+        <Description>
+            This library allows you to render markdown to PDF. It uses the
+            [Markdig](https://github.com/xoofx/markdig) library to parse the markdown and the
+            [QuestPDF](https://www.questpdf.com) library to render the PDF component, hence the
+            name. If you use these libraries, QuestMark might be of use to you.
+        </Description>
     </PropertyGroup>
 
     <ItemGroup>
