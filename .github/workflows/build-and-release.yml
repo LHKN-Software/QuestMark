@@ -1,0 +1,61 @@
+# Resources
+#
+# CI and NuGet Auth:
+# https://andrewlock.net/easily-publishing-nuget-packages-from-github-actions-with-trusted-publishing/
+#
+# Setting assembly and package versions from command line:
+# https://andrewlock.net/version-vs-versionsuffix-vs-packageversion-what-do-they-all-mean/#packageversion
+
+name: Build and release
+
+# We only want to publish commits that are tagged following semver:
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0.9]+ # naive semver regex
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Pack
+        run: |
+          dotnet pack
+
+      - name: Login to NuGet
+        id: login
+        uses: nuget/login@v1
+        with:
+          user: ${{ secrets.NUGET_USERNAME }}
+
+      # Build library with Version set from git tag:
+      - name: Build library
+        run: >
+          dotnet build QuestMark
+          --configuration Release
+          -p:Version=${{ github.REF_NAME }}
+
+      # Pack library with PackageVersion set from git tag:
+      - name: Package library
+        run: >
+          dotnet pack QuestMark
+          --no-build
+          --include-symbols --include-source
+          -p:PackageVersion=${{ github.REF_NAME }}
+
+      - name: Push library
+        run: >
+          dotnet nuget push QuestMark/bin/Release/*.nupkg
+          --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
+          --source https://api.nuget.org/v3/index.json
