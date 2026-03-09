@@ -16,6 +16,7 @@
         </Description>
         <PackageLicenseFile>license.txt</PackageLicenseFile>
         <PackageReadmeFile>readme.md</PackageReadmeFile>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
     <ItemGroup>

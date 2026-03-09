@@ -46,13 +46,14 @@ jobs:
       - name: Package library
         run: >
           dotnet pack QuestMark
+          --output nupkgs
           --no-build
           --include-symbols --include-source
           -p:PackageVersion=${{ github.REF_NAME }}
 
       - name: Push library
         run: >
-          dotnet nuget push QuestMark/bin/Release/**/*.nupkg
+          dotnet nuget push nupkgs/QuestMark.${{ github.REF_NAME }}.nupkg
           --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
           --source https://api.nuget.org/v3/index.json
           --skip-duplicate
