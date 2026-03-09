@@ -14,10 +14,17 @@
             [QuestPDF](https://www.questpdf.com) library to render the PDF component, hence the
             name. If you use these libraries, QuestMark might be of use to you.
         </Description>
+        <PackageLicenseFile>license.txt</PackageLicenseFile>
+        <PackageReadmeFile>readme.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Markdig" Version="0.44.0" />
         <PackageReference Include="QuestPDF" Version="2025.12.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../license.txt" Pack="true" PackagePath="" />
+        <None Include="../readme.md" Pack="true" PackagePath="" />
     </ItemGroup>
 </Project>
