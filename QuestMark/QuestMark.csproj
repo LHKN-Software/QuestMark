@@ -17,6 +17,8 @@
         <PackageLicenseFile>license.txt</PackageLicenseFile>
         <PackageReadmeFile>readme.md</PackageReadmeFile>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <RepositoryUrl>https://github.com/LHKN-Software/QuestMark</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
